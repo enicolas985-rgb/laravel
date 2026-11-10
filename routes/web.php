@@ -119,3 +119,10 @@ $productos= DB::table('productos')
 ->get();
 return $productos;
 });
+Route::get('leftjoin', function(){
+$productos= DB::table('categoria')
+->join('productos','categoria.codigo','=','productos.categoria_codigo' )
+->select ('productos.codigo', 'productos.descripcion', 'productos.precio','categoria.nom_categoria')
+->get();
+return $productos;
+});
